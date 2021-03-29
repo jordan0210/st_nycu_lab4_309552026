@@ -10,7 +10,7 @@
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
-      <module name="st_nycu_lab4_309552026" target="11" />
+      <module name="st_nycu_lab4_309552026" target="8" />
     </bytecodeTargetLevel>
   </component>
 </project>
