@@ -20,9 +20,7 @@ jobs:
       with:
         java-version: 1.11
     - name: Compile with Maven
-      run: |
-        mvn compile
-        mvn test-compile
+      run: mvn clean package -Dmaven.test.skip=true
 
   Test:
     needs: Compile
@@ -35,4 +33,9 @@ jobs:
       with:
         java-version: 1.11
     - name: Test with Maven
-      run: mvn test
+      run: mvn test --log-file testReport.txt
+    - name: Update Test Log
+      uses: actions/upload-artifact@v2
+      with:
+        name: testReport
+        path: testReport.txt
