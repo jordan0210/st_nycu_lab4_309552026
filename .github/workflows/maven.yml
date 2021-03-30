@@ -63,14 +63,20 @@ jobs:
           path: ./target/st_nycu_lab4_309552026-1.0-SNAPSHOT-jar-with-dependencies.jar
 
   Release:
+    if: startsWith(github.ref, 'refs/tags/')
     needs: Assemble
     runs-on: ubuntu-latest
 
     steps:
       - uses: actions/checkout@v2
+      - name: Download Artifact
+        uses: actions/download-artifact@v2
+        with:
+          name: buildJar
       - name: Release
         uses: softprops/action-gh-release@v1
-        if: startsWith(github.ref, 'refs/tags/')
+        with:
+          files: ./*.jar
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
