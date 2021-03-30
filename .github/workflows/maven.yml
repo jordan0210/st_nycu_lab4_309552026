@@ -60,7 +60,7 @@ jobs:
         uses: actions/upload-artifact@v2
         with:
           name: buildJar
-          path: ./target/st_nycu_lab4_309552026-1.0-SNAPSHOT-jar-with-dependencies.jar
+          path: ./target/st_nycu_lab4_309552026-1.0-SNAPSHOT.jar
 
   Release:
     if: startsWith(github.ref, 'refs/tags/')
