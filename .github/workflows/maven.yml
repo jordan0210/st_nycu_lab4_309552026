@@ -72,6 +72,8 @@ jobs:
         uses: actions/download-artifact@v2
         with:
           name: buildJar
+      - name: Update Release Version in pom.xml
+        run: mvn -B versions:set -DnewVersion=${{ github.event.release.tag_name }} -DgenerateBackupPoms=false
       - name: Release
         uses: softprops/action-gh-release@v1
         with:
