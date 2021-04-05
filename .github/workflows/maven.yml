@@ -58,7 +58,9 @@ jobs:
       - name: Update Release Version in pom.xml
         run: mvn -B versions:set -DnewVersion=${{ steps.get_version.outputs.VERSION }} -DgenerateBackupPoms=false
       - name: Assemble Jar File
-        run: mvn -B clean compile assembly:single
+        run: |
+          mvn -B clean compile assembly:single
+          ls -R
       - name: Update Assemble Jar File
         uses: actions/upload-artifact@v2
         with:
